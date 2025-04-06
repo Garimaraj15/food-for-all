@@ -1,0 +1,18 @@
+import Link from "next/link";
+
+export default function DonationCard({ donation }) {
+  return (
+    <div className="border p-4 rounded shadow">
+      <h2 className="text-lg font-bold">{donation.food_name}</h2>
+      <p>Quantity: {donation.quantity}</p>
+      <p>Pickup: {donation.pickup_address}</p>
+      <p>Expiry: {donation.expiry_date}</p>
+      {donation.photo_path && (
+        <img src={donation.photo_path} alt="Donation Image" className="w-full h-40 object-cover mt-2" />
+      )}
+      <Link href={`/donations/${donation.id}`}>
+        <a className="text-blue-500 mt-2 block">View Details</a>
+      </Link>
+    </div>
+  );
+}
